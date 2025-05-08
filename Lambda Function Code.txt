@@ -1,0 +1,31 @@
+import json
+import boto3
+from botocore.exceptions import ClientError
+
+dynamodb = boto3.resource('dynamodb')
+table = dynamodb.Table('Orders')
+
+def lambda_handler(event, context):
+    for record in event.get('Records', []):
+        try:
+            message = json.loads(record['body'])
+            
+            # Ensure the case matches what DynamoDB expects ("OrderID")
+            order_data = {
+                'OrderID': str(message.get('orderId')),  # Match table's partition key
+                'userId': str(message.get('userId')),
+                'itemName': str(message.get('itemName')),
+                'quantity': int(message.get('quantity', 1)),
+                'status': str(message.get('status', 'new')),
+                'timestamp': str(message.get('timestamp'))
+            }
+            
+            response = table.put_item(Item=order_data)
+            print(f"Successfully inserted order: {order_data}")
+            
+        except Exception as e:
+            print(f"Error processing record: {e}")
+            # Don't raise to continue processing other messages
+            continue
+    
+    return {'statusCode': 200}
