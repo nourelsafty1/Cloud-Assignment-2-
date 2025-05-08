@@ -121,3 +121,5 @@
 ---
 
 # Architecture Diagram
+![Architecture Diagram drawio](https://github.com/user-attachments/assets/b85b4263-7372-4b34-a118-29345b4507a2)
+
