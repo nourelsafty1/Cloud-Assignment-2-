@@ -51,7 +51,7 @@
    - Click **Create function**.
 2. **Configure Function**:
    - **Function name**: `ProcessOrderFunction`
-   - **Runtime**: Python 3.9
+   - **Runtime**: Python 3.12
    - Click **Create function**.
 3. **Add SQS Trigger**:
    - Go to **Configuration** → **Triggers** → **Add trigger**.
