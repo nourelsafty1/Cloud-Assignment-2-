@@ -80,7 +80,7 @@
 2. **Verify Execution**:
    - **SQS**: Check `OrderQueue` for the message (poll if needed).
    - **DynamoDB**: Scan the `Orders` table for the new item.
-   - **Lambda Logs**: View logs in CloudWatch under `/aws/lambda/ProcessOrder`.
+   - **Lambda Logs**: View logs in CloudWatch under `/aws/lambda/ProcessOrderFunction`.
 
 ---
 
